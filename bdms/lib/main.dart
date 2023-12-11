@@ -1,6 +1,4 @@
-import 'package:bdms/presentation/authentication/login_screen.dart';
-import 'package:bdms/presentation/authentication/signup_screen.dart';
-import 'package:bdms/presentation/donor_home/report.dart';
+import 'package:bdms/presentation/donor_home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(body: Reprot()),
+      home: Scaffold(body: Home()),
     );
   }
 }
