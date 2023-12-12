@@ -1,3 +1,5 @@
+import 'package:bdms/common_widgets/custom_app_bar.dart';
+import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +15,11 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
+      appBar: const CustomAppBar(
+        title: 'Home',
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(index: 0),
       body: Center(
         child: Column(
           children: [
@@ -68,6 +73,6 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
           ],
         ),
       ),
-    ));
+    );
   }
 }
