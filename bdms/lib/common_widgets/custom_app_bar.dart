@@ -76,7 +76,7 @@ class CustomAppBarContent extends StatelessWidget {
               if (backButton)
                 InkWell(
                   onTap: () {
-                    debugPrint('Back button tapped');
+                    Navigator.of(context).pop();
                   },
                   child: const Icon(
                     Icons.arrow_back,
