@@ -1,12 +1,16 @@
+import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
+import 'package:bdms/presentation/dr_rp_settings/dr_rp_settings.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({
     super.key,
     this.managerView = false,
+    required this.index,
   });
 
   final bool managerView;
+  final int index;
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -15,6 +19,13 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   var selectedIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedIndex = widget.index;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +45,13 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             CustomBottomNavigationBarItem(
               onTap: () {
                 // Navigate to home page
+                widget.managerView
+                    ? null
+                    : Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const DrRpHomeScreen(),
+                        ),
+                      );
                 setState(() {
                   selectedIndex = 0;
                 });
@@ -46,6 +64,17 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               CustomBottomNavigationBarItem(
                 onTap: () {
                   // Navigate to manage page
+                  if (!widget.managerView) {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const DrRpHomeScreen(),
+                      ),
+                    );
+                  } else {
+                    // Navigate to donor/recipeint home page
+                  }
                   setState(() {
                     selectedIndex = 1;
                   });
@@ -68,6 +97,16 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             CustomBottomNavigationBarItem(
               onTap: () {
                 // Navigate to settings page
+                if (!widget.managerView) {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const DrRpSettingsScreen(),
+                    ),
+                  );
+                } else {
+                  // Navigate to manager home page
+                }
                 setState(() {
                   selectedIndex = 3;
                 });
