@@ -1,5 +1,6 @@
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
+import 'package:bdms/common_widgets/event_item.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
       appBar: const CustomAppBar(
         title: 'Home',
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(index: 0),
+      bottomNavigationBar: const CustomBottomNavigationBar(index: 0),
       body: Center(
         child: Column(
           children: [
@@ -32,9 +33,11 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
               children: [
                 TextButton(
                   onPressed: () {
-                    setState(() {
-                      isDonor = true;
-                    });
+                    setState(
+                      () {
+                        isDonor = true;
+                      },
+                    );
                   },
                   child: Text(
                     'Donations',
@@ -68,6 +71,31 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
                     ),
                   ),
                 )
+              ],
+            ),
+            const SizedBox(
+              height: 48,
+            ),
+            ListView(
+              shrinkWrap: true,
+              children: [
+                EventItem(
+                    day: 7,
+                    month: 'Oct',
+                    title: 'Anchor University ',
+                    description: 'description'),
+                const SizedBox(height: 16),
+                EventItem(
+                    day: 8,
+                    month: "Oct",
+                    title: 'Anchor University',
+                    description: 'description'),
+                const SizedBox(height: 16),
+                EventItem(
+                    day: 9,
+                    month: "Oct",
+                    title: 'Anchor University',
+                    description: 'description')
               ],
             )
           ],
