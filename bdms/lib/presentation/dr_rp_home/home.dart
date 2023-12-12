@@ -1,14 +1,14 @@
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class DrRpHomeScreen extends StatefulWidget {
+  const DrRpHomeScreen({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<DrRpHomeScreen> createState() => _DrRpHomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
   bool isDonor = false;
 
   @override
@@ -18,8 +18,9 @@ class _HomeState extends State<Home> {
       body: Center(
         child: Column(
           children: [
+            const SizedBox(height: 48),
             PrimaryButton(text: 'Pay', onPressed: () {}, buttonWidth: 300),
-            const SizedBox(height: 256),
+            const SizedBox(height: 96),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,

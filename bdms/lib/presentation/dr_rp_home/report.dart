@@ -1,8 +1,8 @@
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-class Reprot extends StatelessWidget {
-  const Reprot({super.key});
+class DrRpReportScreen extends StatelessWidget {
+  const DrRpReportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
