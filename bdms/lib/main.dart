@@ -1,4 +1,5 @@
 import 'package:bdms/common_widgets/custom_app_bar.dart';
+import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -70,6 +71,25 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final screens = [
+    Container(
+        child: Center(
+      child: Text('Home'),
+    )),
+    Container(
+        child: Center(
+      child: Text('Manage'),
+    )),
+    Container(
+        child: Center(
+      child: Text('Reports'),
+    )),
+    Container(
+        child: Center(
+      child: Text('Reports'),
+    )),
+  ];
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -83,6 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'Husni',
         backButton: true,
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
+
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
