@@ -1,6 +1,7 @@
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
+import 'package:bdms/presentation/dr_rp_settings/dr_rp_edit_info.dart';
 import 'package:flutter/material.dart';
 
 class DrRpSettingsScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class DrRpSettingsScreen extends StatelessWidget {
       appBar: const CustomAppBar(
         title: 'Settings',
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(index: 3),
+      bottomNavigationBar: const CustomBottomNavigationBar(index: 3),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 64.0,
@@ -25,7 +26,11 @@ class DrRpSettingsScreen extends StatelessWidget {
               buttonHeight: 50,
               text: 'Edit Personal Information',
               // Navigate to edit personal information page
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const DrRpEditPersonalInfo(),
+                ));
+              },
             ),
             const SizedBox(
               height: 64.0,
