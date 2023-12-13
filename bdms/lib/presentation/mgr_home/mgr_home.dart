@@ -36,41 +36,44 @@ class MgrHomeScreen extends StatelessWidget {
                 // Turn to listview builder to display real items
                 child: ListView(
               children: [
-                DrRpInfoItem(
-                  bloodGroup: BloodGroup.A_NEGATIVE,
-                  name: 'Husni',
-                  rowItem1: 'Date: 12/12/2021',
-                  rowItem2: 'Amount: 2 pints',
-                  icon1: Icons.check,
-                  icon2: Icons.delete,
-                  icon1OnTap: () {},
-                  icon2OnTap: () {},
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: DrRpInfoItem(
+                    bloodGroup: BloodGroup.A_NEGATIVE,
+                    name: 'Husni',
+                    rowItem1: 'Date: 12/12/2021',
+                    rowItem2: 'Amount: 2 pints',
+                    icon1: Icons.check,
+                    icon2: Icons.delete,
+                    icon1OnTap: () {},
+                    icon2OnTap: () {},
+                  ),
                 ),
-                const SizedBox(
-                  height: 16,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: DrRpInfoItem(
+                    bloodGroup: BloodGroup.A_NEGATIVE,
+                    name: 'Husni',
+                    rowItem1: 'Date: 12/12/2021',
+                    rowItem2: 'Amount: 2 pints',
+                    icon1: Icons.check,
+                    icon2: Icons.delete,
+                    icon1OnTap: () {},
+                    icon2OnTap: () {},
+                  ),
                 ),
-                DrRpInfoItem(
-                  bloodGroup: BloodGroup.A_NEGATIVE,
-                  name: 'Husni',
-                  rowItem1: 'Date: 12/12/2021',
-                  rowItem2: 'Amount: 2 pints',
-                  icon1: Icons.check,
-                  icon2: Icons.delete,
-                  icon1OnTap: () {},
-                  icon2OnTap: () {},
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                DrRpInfoItem(
-                  bloodGroup: BloodGroup.A_NEGATIVE,
-                  name: 'Husni',
-                  rowItem1: 'Date: 12/12/2021',
-                  rowItem2: 'Amount: 2 pints',
-                  icon1: Icons.check,
-                  icon2: Icons.delete,
-                  icon1OnTap: () {},
-                  icon2OnTap: () {},
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: DrRpInfoItem(
+                    bloodGroup: BloodGroup.A_NEGATIVE,
+                    name: 'Husni',
+                    rowItem1: 'Date: 12/12/2021',
+                    rowItem2: 'Amount: 2 pints',
+                    icon1: Icons.check,
+                    icon2: Icons.delete,
+                    icon1OnTap: () {},
+                    icon2OnTap: () {},
+                  ),
                 ),
               ],
             ))

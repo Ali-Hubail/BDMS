@@ -85,7 +85,7 @@ class DrRpInfoItem extends StatelessWidget {
                       child: Icon(
                         icon1,
                         color: const Color.fromARGB(178, 198, 44, 45),
-                        size: 32,
+                        size: 28,
                       ),
                     ),
                     const SizedBox(
@@ -95,6 +95,7 @@ class DrRpInfoItem extends StatelessWidget {
                       onTap: icon2OnTap,
                       child: Icon(
                         icon2,
+                        size: 28,
                         color: const Color.fromARGB(178, 198, 44, 45),
                       ),
                     )
