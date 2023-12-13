@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
 class PrimaryInput extends StatelessWidget {
-  const PrimaryInput({super.key, this.hintText});
+  const PrimaryInput({super.key, this.hintText, this.width, this.height});
   final String? hintText;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
+      width: width,
       child: TextFormField(
+        textAlign: TextAlign.center,
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(color: Colors.grey),

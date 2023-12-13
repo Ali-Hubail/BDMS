@@ -1,6 +1,5 @@
 import 'package:bdms/common_widgets/blood_type.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
-import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/date_picker.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,7 @@ class _BloodBankState extends State<BloodBank> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Blood Bank'),
-      bottomNavigationBar: const CustomBottomNavigationBar(index: 1),
+      appBar: const CustomAppBar(title: 'Blood Bank', backButton: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 56),
         child: Column(

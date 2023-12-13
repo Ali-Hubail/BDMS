@@ -1,4 +1,4 @@
-import 'package:bdms/presentation/mgr_blood_bank/blood_bank.dart';
+import 'package:bdms/presentation/mgr_blood_bank/mgr_rp_.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: BloodBank(),
+      home: MgrReport(),
     );
   }
 }
