@@ -1,8 +1,5 @@
 import 'package:bdms/presentation/mgr_reports/mgr_reports.dart';
-import 'package:bdms/presentation/mgr_reports/mgr_rp_.dart';
-import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
-import 'package:bdms/presentation/mgr_home/mgr_home.dart';
-import 'package:bdms/presentation/mgr_manage/mgr_manage.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
