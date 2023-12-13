@@ -7,12 +7,14 @@ class EventItem extends StatelessWidget {
       required this.day,
       required this.month,
       required this.title,
-      required this.description});
+      required this.description,
+      this.states});
   int? day;
   String? month;
   String? title;
   String? description;
   String? bulletPoint;
+  final String? states;
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +22,16 @@ class EventItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          const SizedBox(
-            height: 12,
-          ),
           const Text(
             "\u2022 ",
             style:
-                TextStyle(fontSize: 36, color: Color.fromARGB(255, 9, 68, 170)),
+                TextStyle(fontSize: 24, color: Color.fromARGB(255, 9, 68, 170)),
           ),
           const SizedBox(
             width: 16,
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment
-                .start, // Align children to the start of the column
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 month!,
@@ -46,11 +44,10 @@ class EventItem extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            width: 72,
+            width: 56,
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment
-                .center, // Center align the children horizontally
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 title!,
@@ -66,6 +63,14 @@ class EventItem extends StatelessWidget {
                 style: const TextStyle(fontSize: 16, color: Colors.black54),
               ),
             ],
+          ),
+          const Spacer(),
+          Expanded(
+            child: Center(
+              child: Text(
+                states ?? " ",
+              ),
+            ),
           ),
         ],
       ),
