@@ -1,6 +1,7 @@
 import 'package:bdms/presentation/dr_rp_history/dr_rp_history.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_settings.dart';
+import 'package:bdms/presentation/mgr_reports/mgr_reports.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -88,6 +89,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   );
                 } else {
                   // Navigate to manager history page
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const MgrReportsScreen(),
+                    ),
+                  );
                 }
                 setState(() {
                   selectedIndex = 2;

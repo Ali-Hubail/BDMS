@@ -1,17 +1,17 @@
-import 'package:bdms/common_widgets/blood_info.dart';
+import 'package:bdms/common_widgets/blood_stat_info_item.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
-import 'package:bdms/common_widgets/primary_input.dart';
+import 'package:bdms/domain/blood_group.dart';
 import 'package:flutter/material.dart';
 
-class MgrReport extends StatefulWidget {
-  const MgrReport({super.key});
+class MgrReports extends StatefulWidget {
+  const MgrReports({super.key});
 
   @override
-  State<MgrReport> createState() => _MgrReportState();
+  State<MgrReports> createState() => _MgrReportsState();
 }
 
-class _MgrReportState extends State<MgrReport> {
+class _MgrReportsState extends State<MgrReports> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +22,7 @@ class _MgrReportState extends State<MgrReport> {
       body: Padding(
         padding: const EdgeInsets.only(top: 48.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 24),
@@ -40,18 +41,23 @@ class _MgrReportState extends State<MgrReport> {
             const SizedBox(
               height: 24,
             ),
-            const DropdownMenu(
-              dropdownMenuEntries: [
-                DropdownMenuEntry(value: 's', label: 'label')
-              ],
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: DropdownMenu<BloodGroup>(
+                dropdownMenuEntries: [
+                  for (final bloodgroup in BloodGroup.values)
+                    DropdownMenuEntry(
+                        value: bloodgroup, label: bgMap[bloodgroup]!),
+                ],
+              ),
             ),
             const SizedBox(
               height: 24,
             ),
-            const BloodInfo(title: 'Total Blood', number: '25L'),
-            const BloodInfo(title: 'Blood Type Total:', number: '25L'),
-            const BloodInfo(title: 'Total Donations:', number: '25L'),
-            const BloodInfo(title: 'Payments:', number: '500'),
+            const BloodStatInfoItem(title: 'Total Blood', number: '25L'),
+            const BloodStatInfoItem(title: 'Blood Type Total:', number: '25L'),
+            const BloodStatInfoItem(title: 'Total Donations:', number: '25L'),
+            const BloodStatInfoItem(title: 'Payments:', number: '500'),
           ],
         ),
       ),

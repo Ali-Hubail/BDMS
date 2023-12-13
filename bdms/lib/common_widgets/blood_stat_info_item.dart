@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BloodType extends StatelessWidget {
-  const BloodType({
+class BloodStatInfoItem extends StatelessWidget {
+  const BloodStatInfoItem({
     super.key,
-    this.bloodType,
+    this.title,
+    this.number,
   });
-  final String? bloodType;
+  final String? title;
+  final String? number;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,13 +22,13 @@ class BloodType extends StatelessWidget {
             width: 12,
           ),
           Text(
-            bloodType!,
-            style: const TextStyle(fontSize: 20),
+            title!,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
-          const Text(
-            '0',
-            style: TextStyle(fontSize: 20, color: Colors.black54),
+          Text(
+            number.toString(),
+            style: const TextStyle(fontSize: 20, color: Colors.black54),
           ),
         ],
       ),

@@ -1,17 +1,17 @@
-import 'package:bdms/common_widgets/blood_type.dart';
+import 'package:bdms/common_widgets/blood_stat_info_item.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/date_picker.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-class BloodBank extends StatefulWidget {
-  const BloodBank({super.key});
+class MgrBloodBankScreen extends StatefulWidget {
+  const MgrBloodBankScreen({super.key});
 
   @override
-  State<BloodBank> createState() => _BloodBankState();
+  State<MgrBloodBankScreen> createState() => _MgrBloodBankScreenState();
 }
 
-class _BloodBankState extends State<BloodBank> {
+class _MgrBloodBankScreenState extends State<MgrBloodBankScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,8 +63,9 @@ class _BloodBankState extends State<BloodBank> {
             Expanded(
               child: ListView(
                 children: const [
-                  BloodType(
-                    bloodType: 'Total Blood Available',
+                  BloodStatInfoItem(
+                    title: 'Total Blood Available',
+                    number: '0',
                   ),
                   // Add rest of statistics
                 ],
