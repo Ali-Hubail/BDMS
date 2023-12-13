@@ -1,4 +1,3 @@
-import 'package:bdms/presentation/dr_rp_history/dr_rp_history.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: DrRpHistoryScreen(),
+      home: DrRpHomeScreen(),
     );
   }
 }

@@ -11,7 +11,7 @@ class DrRpHistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: "History"),
-      bottomNavigationBar: const CustomBottomNavigationBar(index: 1),
+      bottomNavigationBar: const CustomBottomNavigationBar(index: 2),
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
         child: Column(

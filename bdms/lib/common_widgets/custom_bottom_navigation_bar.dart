@@ -1,3 +1,4 @@
+import 'package:bdms/presentation/dr_rp_history/dr_rp_history.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_settings.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               onTap: () {
                 // Navigate to home page
                 widget.managerView
+                    // navigate to manager home page
                     ? null
                     : Navigator.of(context).push(
                         MaterialPageRoute(
@@ -62,18 +64,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             if (widget.managerView)
               CustomBottomNavigationBarItem(
                 onTap: () {
-                  // Navigate to manage page
-                  if (!widget.managerView) {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const DrRpHomeScreen(),
-                      ),
-                    );
-                  } else {
-                    // Navigate to donor/recipeint home page
+                  if (widget.managerView) {
+                    // Navigate to manager manage page
                   }
+
                   setState(() {
                     selectedIndex = 1;
                   });
@@ -85,6 +79,16 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             CustomBottomNavigationBarItem(
               onTap: () {
                 // Navigate to reports/history page
+                if (!widget.managerView) {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const DrRpHistoryScreen(),
+                    ),
+                  );
+                } else {
+                  // Navigate to manager history page
+                }
                 setState(() {
                   selectedIndex = 2;
                 });
@@ -104,7 +108,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     ),
                   );
                 } else {
-                  // Navigate to manager home page
+                  // Navigate to manager settings page
                 }
                 setState(() {
                   selectedIndex = 3;

@@ -19,13 +19,17 @@ class EventItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(
+        8.0,
+      ),
       child: Row(
         children: [
           const Text(
             "\u2022 ",
-            style:
-                TextStyle(fontSize: 24, color: Color.fromARGB(255, 9, 68, 170)),
+            style: TextStyle(
+              fontSize: 24,
+              color: Color.fromARGB(255, 9, 68, 170),
+            ),
           ),
           const SizedBox(
             width: 16,
@@ -60,7 +64,10 @@ class EventItem extends StatelessWidget {
               Text(
                 description!,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16, color: Colors.black54),
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
               ),
             ],
           ),
