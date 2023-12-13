@@ -1,3 +1,5 @@
+import 'package:bdms/presentation/mgr_reports/mgr_reports.dart';
+import 'package:bdms/presentation/mgr_reports/mgr_rp_.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:bdms/presentation/mgr_home/mgr_home.dart';
 import 'package:bdms/presentation/mgr_manage/mgr_manage.dart';
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: DrRpHomeScreen(),
+      home: MgrReportsScreen(),
     );
   }
 }
