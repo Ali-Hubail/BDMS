@@ -1,7 +1,7 @@
 import 'package:bdms/common_widgets/blood_stat_info_item.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
-import 'package:bdms/domain/blood_group.dart';
+import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:flutter/material.dart';
 
 class MgrReports extends StatefulWidget {

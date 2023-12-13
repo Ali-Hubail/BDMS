@@ -1,4 +1,4 @@
-import 'package:bdms/domain/blood_group.dart';
+import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:flutter/material.dart';
 
 class DrRpInfoItem extends StatelessWidget {
