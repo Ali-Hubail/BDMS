@@ -23,7 +23,7 @@ class MgrHomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Requests',
+              'Recieving Requests',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
