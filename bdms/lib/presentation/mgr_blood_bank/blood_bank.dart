@@ -49,10 +49,14 @@ class _BloodBankState extends State<BloodBank> {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  'Blood Collected',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    'Blood Collected',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
                 ),
+                Spacer(),
                 DatePicker(
                   hintText: 'Date',
                 ),
