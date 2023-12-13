@@ -2,7 +2,7 @@ import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/dr_rp_info_item.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
-import 'package:bdms/domain/blood_group.dart';
+import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:flutter/material.dart';
 
 class DrRpHomeScreen extends StatefulWidget {
