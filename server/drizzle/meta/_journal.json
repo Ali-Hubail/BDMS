@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1702485621123,
+      "tag": "0000_simple_the_call",
+      "breakpoints": true
+    }
+  ]
+}
