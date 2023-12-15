@@ -1,9 +1,7 @@
 import 'package:bdms/common_widgets/blood_stat_info_item.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/event_item.dart';
-import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class MgrManageDrRpScreen extends StatelessWidget {
   const MgrManageDrRpScreen({super.key});
@@ -26,7 +24,7 @@ class MgrManageDrRpScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-     // fetch real data and display them
+            // fetch real data and display them
             const Column(
               children: [
                 BloodStatInfoItem(

@@ -47,7 +47,7 @@ class _MgrReportsState extends State<MgrReports> {
                 dropdownMenuEntries: [
                   for (final bloodgroup in BloodGroup.values)
                     DropdownMenuEntry(
-                        value: bloodgroup, label: bgMap[bloodgroup]!),
+                        value: bloodgroup, label: bgToString[bloodgroup]!),
                 ],
               ),
             ),

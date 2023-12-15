@@ -2,6 +2,7 @@ import { InferModel, relations, sql } from "drizzle-orm";
 import {
   bigint,
   boolean,
+  doublePrecision as float,
   date,
   pgEnum,
   pgTable,
@@ -19,7 +20,7 @@ export const person = pgTable("person", {
     name: varchar("name", {length: 255}).notNull(),
     email: varchar("email", {length: 255}).notNull().unique(),
     age: bigint('age', { mode: 'number' }).notNull(),
-    weight: bigint('weight', { mode: 'number' }).notNull(),
+    weight: float('weight').notNull(),
     contact_number: varchar('contact_number', { length: 12 }).notNull(),
     role: roleEnum('role').notNull(),
     blood_group: blood_types('blood_group').notNull(),
