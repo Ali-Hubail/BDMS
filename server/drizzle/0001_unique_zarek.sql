@@ -1,0 +1,1 @@
+ALTER TABLE "person" ALTER COLUMN "weight" SET DATA TYPE double precision;

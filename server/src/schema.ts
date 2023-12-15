@@ -3,6 +3,7 @@ import {
   bigint,
   doublePrecision as float,
   boolean,
+  doublePrecision as float,
   date,
   pgEnum,
   pgTable,

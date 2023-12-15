@@ -68,7 +68,7 @@ class DrRpInfoItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  bgMap[bloodGroup]!,
+                  bgToString[bloodGroup]!,
                   style: const TextStyle(
                     fontSize: 20,
                     color: Color(0xFFC62C2D),

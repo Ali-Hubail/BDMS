@@ -1,18 +1,49 @@
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:bdms/common_widgets/primary_input.dart';
+import 'package:bdms/data/authentication_repository.dart';
+import 'package:bdms/presentation/authentication/signup_screen.dart';
+import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailEditingController = TextEditingController();
+  final _passwordEditingController = TextEditingController();
+
+  final authRepoistory = AuthenticationRepository();
+
+  Future<bool> login() async {
+    String email = _emailEditingController.text;
+    String password = _passwordEditingController.text;
+    if (email.isEmpty || password.isEmpty) {
+      return false;
+    }
+
+    final success = await authRepoistory.signIn(email, password);
+    return success;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailEditingController.dispose();
+    _passwordEditingController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(48, 20, 48, 0),
-          child: Center(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(48, 20, 48, 0),
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -37,12 +68,31 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 64),
-                const PrimaryInput(hintText: 'Email'),
+                PrimaryInput(
+                  hintText: 'Email',
+                  controller: _emailEditingController,
+                ),
                 const SizedBox(height: 16),
-                const PrimaryInput(hintText: 'Password'),
+                PrimaryInput(
+                  hintText: 'Password',
+                  controller: _passwordEditingController,
+                ),
                 const SizedBox(height: 96),
                 PrimaryButton(
-                    text: 'Login', onPressed: () {}, buttonWidth: 350),
+                    text: 'Login',
+                    onPressed: () async {
+                      final res = await login();
+                      if (res) {
+                        print(authRepoistory.signedInUser!.id);
+
+                        if (context.mounted) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const DrRpHomeScreen(),
+                          ));
+                        }
+                      }
+                    },
+                    buttonWidth: 350),
                 const SizedBox(height: 15),
                 const InkWell(
                   onTap: null,
@@ -62,7 +112,9 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(width: 4),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ));
                       },
                       child: const Text(
                         'Sign Up',

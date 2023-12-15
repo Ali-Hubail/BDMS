@@ -1,5 +1,5 @@
 {
-  "id": "06ea1bac-954f-4f4d-ba4b-16158c517eed",
+  "id": "79c3bf28-e02e-419f-aac9-a57a7f301fb5",
   "prevId": "ef8505bd-9e43-4a02-9a37-048e2f571992",
   "version": "5",
   "dialect": "pg",
@@ -318,7 +318,7 @@
         },
         "weight": {
           "name": "weight",
-          "type": "bigint",
+          "type": "double precision",
           "primaryKey": false,
           "notNull": true
         },
@@ -395,6 +395,7 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
+
     },
     "request": {
       "name": "request",
