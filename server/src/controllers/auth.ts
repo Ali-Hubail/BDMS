@@ -14,6 +14,7 @@ export async function signUp(
     ){
         try{
             const encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+            console.log(req.body);
             const newUser : PersonType= {
                 name: req.body.name,
                 email: req.body.email,
@@ -39,6 +40,7 @@ export async function login(
     ){
         try{
             const {email, password} = req.body;
+            console.log(req.body);
             const foundPerson = await db.query.person.findFirst({
                 where: and(
                     eq(person.email, email),

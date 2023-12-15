@@ -19,7 +19,7 @@ class BloodGroupItem extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Text(
-          bgMap[bloodGroup]!,
+          bgToString[bloodGroup]!,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 12,
