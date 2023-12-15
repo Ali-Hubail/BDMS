@@ -1,5 +1,5 @@
 {
-  "id": "7339bfa7-8396-455c-9e7a-fa09c8ff4ec9",
+  "id": "ef8505bd-9e43-4a02-9a37-048e2f571992",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -310,8 +310,14 @@
           "primaryKey": false,
           "notNull": true
         },
-        "bigint": {
-          "name": "bigint",
+        "age": {
+          "name": "age",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weight": {
+          "name": "weight",
           "type": "bigint",
           "primaryKey": false,
           "notNull": true
@@ -339,12 +345,26 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "person_email_unique": {
+          "name": "person_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
     },
     "recipient": {
       "name": "recipient",

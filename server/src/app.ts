@@ -2,6 +2,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import { person } from "./schema";
 import { personRouter } from "./routes/person";
+import { authRouter } from "./routes/auth";
 
 
 const app = express();
@@ -9,7 +10,7 @@ const port = 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use("/auth", authRouter)
 app.use("/person", personRouter);
 
 app.get("*", async (req, res) => {
