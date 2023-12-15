@@ -8,6 +8,27 @@
       "when": 1702647617612,
       "tag": "0000_aromatic_harry_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1702659062114,
+      "tag": "0001_nasty_mad_thinker",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1702659353486,
+      "tag": "0002_ambiguous_zuras",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1702659753380,
+      "tag": "0003_overrated_speed",
+      "breakpoints": true
     }
   ]
 }
