@@ -149,16 +149,21 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
                 text: 'Send Request',
                 onPressed: () {
                   // process request
-                  showAdaptiveDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) {
-                      return Container(
-                        width: 200,
-                        height: 50,
-                        color: Colors.white,
-                        child: Center(
-                          child: Text('Sent Request'),
-                        ),
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Request Sent'),
+                        content: const Text(
+                            'Your request has been sent successfully.'),
+                        actions: <Widget>[
+                          ElevatedButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
                       );
                     },
                   );
