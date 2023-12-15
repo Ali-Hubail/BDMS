@@ -17,13 +17,14 @@ export const blood_types = pgEnum("blood_types", ["A+", "A-", "B+", "B-", "AB+",
 export const person = pgTable("person", {
     person_id: uuid("person_id").primaryKey().default(sql`gen_random_uuid()`),
     name: varchar("name", {length: 255}).notNull(),
-    email: varchar("email", {length: 255}).notNull(),
-    age: bigint('bigint', { mode: 'number' }).notNull(),
-    weight: bigint('bigint', { mode: 'number' }).notNull(),
+    email: varchar("email", {length: 255}).notNull().unique(),
+    age: bigint('age', { mode: 'number' }).notNull(),
+    weight: bigint('weight', { mode: 'number' }).notNull(),
     contact_number: varchar('contact_number', { length: 12 }).notNull(),
     role: roleEnum('role').notNull(),
     blood_group: blood_types('blood_group').notNull(),
     address: varchar('address', { length: 255 }).notNull(),
+    password: varchar('password', { length: 255 }).notNull(),  
     });
 export const donor = pgTable("donor", {
     donor_id: uuid("donor_id").primaryKey().references(()=>person.person_id),

@@ -56,11 +56,14 @@ CREATE TABLE IF NOT EXISTS "person" (
 	"person_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(255) NOT NULL,
 	"email" varchar(255) NOT NULL,
-	"bigint" bigint NOT NULL,
+	"age" bigint NOT NULL,
+	"weight" bigint NOT NULL,
 	"contact_number" varchar(12) NOT NULL,
 	"role" "role" NOT NULL,
 	"blood_group" "blood_types" NOT NULL,
-	"address" varchar(255) NOT NULL
+	"address" varchar(255) NOT NULL,
+	"password" varchar(255) NOT NULL,
+	CONSTRAINT "person_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "recipient" (
