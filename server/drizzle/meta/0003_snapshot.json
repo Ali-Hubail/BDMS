@@ -1,6 +1,6 @@
 {
-  "id": "79c3bf28-e02e-419f-aac9-a57a7f301fb5",
-  "prevId": "ef8505bd-9e43-4a02-9a37-048e2f571992",
+  "id": "ef87fff4-0747-4515-83f2-2f20f275cb4a",
+  "prevId": "7f21399b-9e5a-4b57-b80a-042178ebc788",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -27,14 +27,20 @@
           "primaryKey": false,
           "notNull": true
         },
-        "bigint": {
-          "name": "bigint",
+        "quantity": {
+          "name": "quantity",
           "type": "bigint",
           "primaryKey": false,
           "notNull": true
         },
         "donor_id": {
           "name": "donor_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "blood_bank_id": {
+          "name": "blood_bank_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -51,6 +57,19 @@
           ],
           "columnsTo": [
             "person_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "blood_blood_bank_id_blood_bank_bldbank_id_fk": {
+          "name": "blood_blood_bank_id_blood_bank_bldbank_id_fk",
+          "tableFrom": "blood",
+          "tableTo": "blood_bank",
+          "columnsFrom": [
+            "blood_bank_id"
+          ],
+          "columnsTo": [
+            "bldbank_id"
           ],
           "onDelete": "no action",
           "onUpdate": "no action"
@@ -82,8 +101,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "bigint": {
-          "name": "bigint",
+        "quantity": {
+          "name": "quantity",
           "type": "bigint",
           "primaryKey": false,
           "notNull": true
@@ -318,7 +337,7 @@
         },
         "weight": {
           "name": "weight",
-          "type": "double precision",
+          "type": "bigint",
           "primaryKey": false,
           "notNull": true
         },
@@ -395,7 +414,6 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
-
     },
     "request": {
       "name": "request",
@@ -426,6 +444,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "blood_bank_id": {
+          "name": "blood_bank_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
         "request_status": {
           "name": "request_status",
           "type": "boolean",
@@ -437,10 +461,29 @@
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
+        },
+        "request_date": {
+          "name": "request_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
+        "request_blood_bank_id_blood_bank_bldbank_id_fk": {
+          "name": "request_blood_bank_id_blood_bank_bldbank_id_fk",
+          "tableFrom": "request",
+          "tableTo": "blood_bank",
+          "columnsFrom": [
+            "blood_bank_id"
+          ],
+          "columnsTo": [
+            "bldbank_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
         "request_sent_by_person_person_id_fk": {
           "name": "request_sent_by_person_person_id_fk",
           "tableFrom": "request",

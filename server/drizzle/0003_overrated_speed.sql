@@ -1,0 +1,1 @@
+ALTER TABLE "request" ADD COLUMN "request_date" date NOT NULL;

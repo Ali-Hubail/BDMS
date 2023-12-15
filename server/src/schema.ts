@@ -1,19 +1,19 @@
 import { InferModel, relations, sql } from "drizzle-orm";
 import {
   bigint,
+  doublePrecision as float,
   boolean,
   doublePrecision as float,
   date,
   pgEnum,
   pgTable,
-  text,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 
 export const roleEnum = pgEnum("role", ["admin", "user"]);
 export const blood_types = pgEnum("blood_types", ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]);
-
+export const request_types = pgEnum("request_types", ["donation", "receiving"]);
 
 export const person = pgTable("person", {
     person_id: uuid("person_id").primaryKey().default(sql`gen_random_uuid()`),
@@ -38,15 +38,16 @@ export const blood = pgTable("blood", {
     dontation_id: uuid("dontation_id").primaryKey().default(sql`gen_random_uuid()`),    
     expiration_date: date("expiration_date").notNull(),
     blood_group: blood_types('blood_group').notNull(),
-    quantity: bigint('bigint', { mode: 'number' }).notNull(),
+    quantity: bigint('quantity', { mode: 'number' }).notNull(),
     donor_id: uuid("donor_id").references(()=>person.person_id),
+    blood_bank_id: uuid("blood_bank_id").references(()=>blood_bank.bldbank_id),
     });
 
 export const blood_bank = pgTable("blood_bank", {
         bldbank_id: uuid("bldbank_id").primaryKey().default(sql`gen_random_uuid()`),
         name: varchar("name", {length: 255}).notNull(),
         location: varchar('address', { length: 255 }).notNull(),
-        quantity: bigint('bigint', { mode: 'number' }).notNull(),
+        quantity: bigint('quantity', { mode: 'number' }).notNull(),
         });
 export const manager = pgTable("manager", {
     manager_id: uuid("manager_id").primaryKey().references(()=>person.person_id),
@@ -73,7 +74,8 @@ export const donorBloodRelation = relations(donor, ({many})=>({
 }))
 
 export const bloodBankBloodRelation = relations(blood_bank, ({many})=>({
-    blood: many(blood)
+    blood: many(blood),
+    request: many(requestTable)
 }))
 export const managerCommunicatesRelation = relations(manager, ({many})=>({ 
     communicates: many(communicates)
@@ -82,7 +84,8 @@ export const hospitalCommunicatesRelation = relations(hospital, ({many})=>({
     communicates: many(communicates)
 }))
 export const personDiseaseRelation = relations(person, ({many})=>({ 
-    disease: many(disease)
+    disease: many(disease),
+    request: many(requestTable)
 }))
 export const diseasePersonRelation = relations(disease, ({one})=>({
     person: one(person, {
@@ -96,9 +99,23 @@ export const recipientBloodBankRelation = relations(recipient, ({many})=>({
 export const managerBloodBankRelation = relations(manager, ({one})=>({
     blood_bank: one(blood_bank)
 }))
+export const requestTable= pgTable("request", {
+    request_id: uuid("request_id").primaryKey().default(sql`gen_random_uuid()`),
+    request_type: request_types('request_type').notNull(),
+    blood_group: blood_types('blood_group').notNull(),
+    quantity: bigint('quantity', { mode: 'number' }).notNull(),
+    blood_bank_id: uuid("blood_bank_id").references(()=>blood_bank.bldbank_id),
+    request_status: boolean('request_status').notNull(),
+    sent_by: uuid("sent_by").references(()=>person.person_id),
+    request_date: date("request_date").notNull(),
+    });
 
-
-
+export const requestBloodBankRelation = relations(requestTable, ({one})=>({
+    blood_bank: one(blood_bank)
+}))
+export const requestPersonRelation = relations(requestTable, ({one})=>({
+    person: one(person)
+}))
 
 
 export type Person = InferModel<typeof person>;
@@ -110,3 +127,5 @@ export type Manager = InferModel<typeof manager>;
 export type Hospital = InferModel<typeof hospital>;
 export type Communicates = InferModel<typeof communicates>;
 export type Disease = InferModel<typeof disease>;
+export type RequestType = InferModel<typeof requestTable>;
+
