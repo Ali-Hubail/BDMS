@@ -11,7 +11,7 @@ class PrimaryInput extends StatelessWidget {
     return SizedBox(
       height: 80,
       width: width,
-      child: TextFormField(
+      child: TextField(
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           hintText: hintText,
