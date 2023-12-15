@@ -14,6 +14,7 @@ class MgrManageDrRpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
+        // replace with selected recipient/donor name
         title: 'Recipient/Donor Name',
         backButton: true,
       ),
@@ -25,117 +26,7 @@ class MgrManageDrRpScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                PrimaryButton(
-                  text: 'Donation',
-                  buttonWidth: 172,
-                  buttonHeight: 48,
-                  // open a dialog to complete the process
-                  onPressed: () async {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              const Text(
-                                'Donation',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              // add real data
-                              const BloodStatInfoItem(
-                                title: 'Blood Group:',
-                                number: '0',
-                              ),
-                              const BloodStatInfoItem(
-                                title: 'Amount:',
-                                number: '0',
-                              ),
-                              const SizedBox(
-                                height: 48,
-                              ),
-                              PrimaryButton(
-                                text: 'Confirm',
-                                buttonWidth: 172,
-                                buttonHeight: 48,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-                const Spacer(),
-                PrimaryButton(
-                  text: 'Recieve',
-                  buttonHeight: 48,
-                  buttonWidth: 172,
-                  // open a dialog to complete the process
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              const Text(
-                                'Recieve',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              // add real data
-                              const BloodStatInfoItem(
-                                title: 'Blood Group:',
-                                number: '0',
-                              ),
-                              const BloodStatInfoItem(
-                                title: 'Amount Needed:',
-                                number: '0',
-                              ),
-                              const SizedBox(
-                                height: 48,
-                              ),
-                              PrimaryButton(
-                                text: 'Confirm',
-                                buttonWidth: 172,
-                                buttonHeight: 48,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            // fetch real data and display them
+     // fetch real data and display them
             const Column(
               children: [
                 BloodStatInfoItem(
