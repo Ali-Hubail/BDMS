@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _contactNumberEditingController = TextEditingController();
   final _weightEditingController = TextEditingController();
 
-  final authRepository = AuthenticationRepository();
+  final authRepository = AuthenticationRepository.authInstance;
 
   @override
   void initState() {

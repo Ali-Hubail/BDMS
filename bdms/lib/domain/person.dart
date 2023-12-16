@@ -2,9 +2,10 @@
 import 'dart:convert';
 
 import 'package:bdms/domain/blood_group_enum.dart';
+import 'package:bdms/domain/disease_collection.dart';
 
 class Person {
-  const Person({
+  Person({
     required this.id,
     required this.email,
     required this.contactNumber,
@@ -25,7 +26,8 @@ class Person {
   final String address;
   final double weight;
   final int age;
-  
+  final DiseasesCollection diseasesCollection =
+      DiseasesCollection(diseases: []);
 
   @override
   bool operator ==(covariant Person other) {
