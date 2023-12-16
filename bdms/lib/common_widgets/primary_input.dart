@@ -7,10 +7,12 @@ class PrimaryInput extends StatelessWidget {
     this.width,
     this.height,
     this.controller,
+    this.obscuredText = false,
   });
   final String? hintText;
   final double? width;
   final double? height;
+  final bool obscuredText;
   final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class PrimaryInput extends StatelessWidget {
       height: 80,
       width: width,
       child: TextField(
+        obscureText: obscuredText,
         controller: controller,
         textAlign: TextAlign.center,
         decoration: InputDecoration(

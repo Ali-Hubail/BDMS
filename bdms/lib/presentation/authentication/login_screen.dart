@@ -3,6 +3,7 @@ import 'package:bdms/common_widgets/primary_input.dart';
 import 'package:bdms/data/authentication_repository.dart';
 import 'package:bdms/presentation/authentication/signup_screen.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
+import 'package:bdms/presentation/mgr_home/mgr_home.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -76,23 +77,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 PrimaryInput(
                   hintText: 'Password',
                   controller: _passwordEditingController,
+                  obscuredText: true,
                 ),
                 const SizedBox(height: 96),
                 PrimaryButton(
-                    text: 'Login',
-                    onPressed: () async {
-                      final res = await login();
-                      if (res) {
-                        print(authRepoistory.signedInUser!.id);
-
-                        if (context.mounted) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const DrRpHomeScreen(),
-                          ));
-                        }
+                  text: 'Login',
+                  onPressed: () async {
+                    final res = await login();
+                    if (res) {
+                      if (context.mounted) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          if (authRepoistory.signedInUser.role != 'user') {
+                            return const MgrHomeScreen();
+                          }
+                          return const DrRpHomeScreen();
+                        }));
                       }
-                    },
-                    buttonWidth: 350),
+                    }
+                  },
+                  buttonWidth: 350,
+                ),
                 const SizedBox(height: 15),
                 const InkWell(
                   onTap: null,
