@@ -2,8 +2,8 @@ import 'package:bdms/domain/person.dart';
 import 'package:http/http.dart' as http;
 
 class AuthenticationRepository {
-  late final Person user;
-  Person get signedInUser => user;
+  Person? user;
+  Person? get signedInUser => user;
   static final AuthenticationRepository _instance =
       AuthenticationRepository._();
 

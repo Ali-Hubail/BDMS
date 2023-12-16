@@ -1,6 +1,8 @@
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
+import 'package:bdms/data/authentication_repository.dart';
+import 'package:bdms/presentation/authentication/login_screen.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_edit_info.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_edit_medical_history.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +55,12 @@ class DrRpSettingsScreen extends StatelessWidget {
               height: 50,
               child: TextButton(
                 // Logout the user
-                onPressed: () {},
+                onPressed: () {
+                  AuthenticationRepository.authInstance.user = null;
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ));
+                },
                 child: const Text(
                   'Logout',
                   style: TextStyle(
