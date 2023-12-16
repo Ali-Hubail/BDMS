@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:bdms/domain/blood_group_enum.dart';
-import 'package:bdms/domain/disease_collection.dart';
+import 'package:bdms/domain/diseases_collection.dart';
 
 class Person {
   Person({
