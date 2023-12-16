@@ -3,7 +3,6 @@ import 'package:bdms/common_widgets/primary_input.dart';
 import 'package:bdms/data/authentication_repository.dart';
 import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:bdms/presentation/authentication/login_screen.dart';
-import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
