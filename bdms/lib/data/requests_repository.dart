@@ -39,7 +39,35 @@ class RequestsRepository {
       'quantity': request.quantity.toString(),
       'sent_by': request.sentBy,
     });
-    print(res.statusCode);
+    return res.statusCode == 200;
+  }
+
+  Future<bool> fetchRequests() async {
+    final res = await http.get(Uri.parse('http://10.0.2.2:8080/request/'));
+    final List<dynamic> decodedRes = jsonDecode(res.body);
+    List<Request> requests =
+        decodedRes.map((jsonItem) => Request.fromJsonn(jsonItem)).toList();
+
+    final Person drRp = AuthenticationRepository.authInstance.signedInUser;
+    drRp.requestsCollection.reqs.clear();
+    for (int i = 0; i < requests.length; i++) {
+      drRp.requestsCollection.addRequest(requests[i]);
+    }
+
+    return res.statusCode == 200;
+  }
+
+  Future<bool> approveRequest(Request request) async {
+    final res = await http
+        .patch(Uri.parse('http://10.0.2.2:8080/request/${request.requestId}'));
+
+    return res.statusCode == 200;
+  }
+
+  Future<bool> rejectRequest(Request request) async {
+    final res = await http
+        .delete(Uri.parse('http://10.0.2.2:8080/request/${request.requestId}'));
+
     return res.statusCode == 200;
   }
 }

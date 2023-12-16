@@ -49,6 +49,22 @@ export async function approveRequest(
         }
     }
 
+    export async function rejectRequest(
+        req:Request,
+        res:Response,
+        next:NextFunction
+        ){
+            try{
+                const {id} = req.params;
+                const deletedRequest = await db.delete(requestTable).where(
+                    eq(requestTable.request_id, id)
+                ).returning();
+                return res.send(deletedRequest);
+            }catch(err){
+                next(err);
+            }
+        }
+
     export async function getUserApprovedRequests(
         req:Request,
         res:Response,

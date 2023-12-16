@@ -54,4 +54,17 @@ class Request {
 
   factory Request.fromJson(String source, i) =>
       Request.fromMap(json.decode(source) as Map<String, dynamic>, i);
+
+  factory Request.fromJsonn(Map<String, dynamic> json) {
+    return Request(
+      requestId: json['request_id'] as String,
+      requestType: json['request_type'],
+      bloodGroup: sTringToBg[json['blood_group']] as BloodGroup,
+      quantity: json['quantity'],
+      bloodbankId: json['blood_bank_id'],
+      requestStatus: json['request_status'],
+      sentBy: json['sent_by'],
+      requestDate: DateTime.parse(json['request_date']),
+    );
+  }
 }
