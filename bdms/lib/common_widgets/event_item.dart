@@ -48,7 +48,7 @@ class EventItem extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            width: 56,
+            width: 24,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,7 +71,9 @@ class EventItem extends StatelessWidget {
               ),
             ],
           ),
-          const Spacer(),
+          const SizedBox(
+            width: 8,
+          ),
           Expanded(
             child: Center(
               child: Text(

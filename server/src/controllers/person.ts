@@ -1,7 +1,7 @@
 import {eq } from "drizzle-orm";
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response, request } from "express";
 import db from "../db";
-import {Disease, disease, person} from "../schema";
+import {Disease, disease, person, requestTable} from "../schema";
 
 export async function getPerson(
     req:Request,
@@ -53,7 +53,9 @@ export async function getHistory(
         const foundPerson = await db.query.person.findFirst({
             where: eq(person.person_id, id),
             with: {
-                request: true,
+                request: {
+                    where: eq(requestTable.request_status, true),
+                },
             }
             })
             const { password, ...rest} = foundPerson!;
