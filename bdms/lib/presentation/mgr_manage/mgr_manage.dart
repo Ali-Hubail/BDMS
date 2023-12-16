@@ -2,6 +2,7 @@ import 'package:bdms/common_widgets/blood_group_item.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/dr_rp_info_item.dart';
+import 'package:bdms/data/requests_repository.dart';
 import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,9 @@ class MgrManageScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 2.0),
                     child: BloodGroupItem(
                       bloodGroup: bloodGroup,
-                      onTap: () {},
+                      onTap: () {
+                        RequestsRepository().fetchRequests();
+                      },
                     ),
                   ),
               ],

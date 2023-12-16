@@ -3,7 +3,6 @@ import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_settings.dart';
 import 'package:bdms/presentation/mgr_home/mgr_home.dart';
 import 'package:bdms/presentation/mgr_manage/mgr_manage.dart';
-import 'package:bdms/presentation/mgr_manage/mgr_manage_dr_rp.dart';
 import 'package:bdms/presentation/mgr_reports/mgr_reports.dart';
 import 'package:flutter/material.dart';
 
