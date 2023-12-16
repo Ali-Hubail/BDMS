@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class AuthenticationRepository {
   late final Person user;
-  get signedInUser => user;
+  Person get signedInUser => user;
   static final AuthenticationRepository _instance =
       AuthenticationRepository._();
 

@@ -7,4 +7,14 @@ class RequestsCollection {
   });
 
   final List<Request> requests;
+
+  List<Request> get reqs => requests;
+
+  void addRequest(Request req) {
+    requests.add(req);
+  }
+
+  void removeRequest(Request req) {
+    requests.remove(req);
+  }
 }

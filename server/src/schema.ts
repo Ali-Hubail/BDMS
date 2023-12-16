@@ -112,10 +112,16 @@ export const requestTable= pgTable("request", {
 export const requestBloodBankRelation = relations(requestTable, ({one})=>({
     blood_bank: one(blood_bank)
 }))
-export const requestPersonRelation = relations(requestTable, ({one})=>({
-    person: one(person)
+export const requestPersonRelation = relations(person, ({many})=>({
+    request: many(requestTable), disease: many(disease)
 }))
 
+export const personRequestRelation = relations(requestTable, ({one})=>({
+    person: one(person, {
+        fields: [requestTable.sent_by],
+        references: [person.person_id],
+}),
+}));
 
 export type Person = InferModel<typeof person>;
 export type Donor = InferModel<typeof donor>;
