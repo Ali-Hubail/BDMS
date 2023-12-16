@@ -1,6 +1,9 @@
 import 'package:bdms/presentation/dr_rp_history/dr_rp_history.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_settings.dart';
+import 'package:bdms/presentation/mgr_home/mgr_home.dart';
+import 'package:bdms/presentation/mgr_manage/mgr_manage.dart';
+import 'package:bdms/presentation/mgr_manage/mgr_manage_dr_rp.dart';
 import 'package:bdms/presentation/mgr_reports/mgr_reports.dart';
 import 'package:flutter/material.dart';
 
@@ -46,14 +49,17 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             CustomBottomNavigationBarItem(
               onTap: () {
                 // Navigate to home page
-                widget.managerView
-                    // navigate to manager home page
-                    ? null
-                    : Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const DrRpHomeScreen(),
-                        ),
-                      );
+                if (widget.managerView) {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MgrHomeScreen(),
+                  ));
+                } else {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const DrRpHomeScreen(),
+                  ));
+                }
                 setState(() {
                   selectedIndex = 0;
                 });
@@ -65,9 +71,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             if (widget.managerView)
               CustomBottomNavigationBarItem(
                 onTap: () {
-                  if (widget.managerView) {
-                    // Navigate to manager manage page
-                  }
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MgrManageScreen(),
+                  ));
 
                   setState(() {
                     selectedIndex = 1;

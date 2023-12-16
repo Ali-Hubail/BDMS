@@ -27,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     final success = await authRepoistory.signIn(email, password);
-    print(success);
     return success;
   }
 
@@ -86,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () async {
                     final res = await login();
                     if (res) {
-                      print(authRepoistory.signedInUser.id);
                       if (context.mounted) {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
