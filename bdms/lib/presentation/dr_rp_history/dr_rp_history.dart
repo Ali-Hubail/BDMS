@@ -2,6 +2,7 @@ import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/event_item.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
+import 'package:bdms/data/requests_repository.dart';
 import 'package:flutter/material.dart';
 
 class DrRpHistoryScreen extends StatelessWidget {
@@ -28,7 +29,11 @@ class DrRpHistoryScreen extends StatelessWidget {
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  PrimaryButton(text: 'Choose Date', onPressed: () {}),
+                  PrimaryButton(
+                      text: 'Choose Date',
+                      onPressed: () {
+                        RequestsRepository().getDrRpHistory();
+                      }),
                 ],
               ),
             ),
