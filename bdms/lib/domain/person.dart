@@ -25,6 +25,7 @@ class Person {
   final String address;
   final double weight;
   final int age;
+  
 
   @override
   bool operator ==(covariant Person other) {

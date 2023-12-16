@@ -116,8 +116,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _emailEditingController,
                     ),
                     PrimaryInput(
-                        hintText: 'Password',
-                        controller: _passwordEditingController),
+                      hintText: 'Password',
+                      controller: _passwordEditingController,
+                      obscuredText: true,
+                    ),
                     PrimaryInput(
                       hintText: 'Address',
                       controller: _addressEditingController,
@@ -159,7 +161,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     if (success) {
                       if (context.mounted) {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const DrRpHomeScreen(),
+                          builder: (context) => const LoginScreen(),
                         ));
                       }
                     }
