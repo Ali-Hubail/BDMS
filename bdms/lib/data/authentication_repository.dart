@@ -4,6 +4,17 @@ import 'package:http/http.dart' as http;
 class AuthenticationRepository {
   late final Person user;
   get signedInUser => user;
+  static final AuthenticationRepository _instance =
+      AuthenticationRepository._();
+
+  static get authInstance => _instance;
+
+  factory AuthenticationRepository() {
+    return _instance;
+  }
+
+  AuthenticationRepository._();
+
   Future<bool> signIn(String email, String password) async {
     final res =
         await http.post(Uri.parse('http://10.0.2.2:8080/auth/login'), body: {

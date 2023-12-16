@@ -28,6 +28,7 @@ export async function getDiseases(
     ){
         try{
         const { id } = req.params;
+        console.log(req.params);
         const foundPerson = await db.query.person.findFirst({
             where: eq(person.person_id, id),
             with: {
