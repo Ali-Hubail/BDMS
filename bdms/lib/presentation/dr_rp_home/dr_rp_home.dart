@@ -1,8 +1,13 @@
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
+import 'package:bdms/data/authentication_repository.dart';
+import 'package:bdms/data/requests_repository.dart';
 import 'package:bdms/domain/blood_group_enum.dart';
+import 'package:bdms/domain/person.dart';
+import 'package:bdms/domain/request.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class DrRpHomeScreen extends StatefulWidget {
   const DrRpHomeScreen({super.key});
@@ -13,12 +18,38 @@ class DrRpHomeScreen extends StatefulWidget {
 
 class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
   var isDonation = true;
-  final _textEditingController = TextEditingController();
+  final _amountEditingController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
-    _textEditingController.dispose();
+    _amountEditingController.dispose();
+  }
+
+  Future<bool> sendRequest() {
+    final Person user = AuthenticationRepository.authInstance.signedInUser;
+    final String requestId = const Uuid().v4();
+    final DateTime requestDate = DateTime.now();
+    final String requestType = isDonation ? 'donation' : 'receiving';
+    final BloodGroup bloodGroup = user.bloodGroup;
+    if (_amountEditingController.text.isEmpty ||
+        _amountEditingController.text
+            .contains('abcdefghijklmnopqrstuvwxyz,..+-*/@!@&)%@^&!/|()=')) {
+      return Future.value(false);
+    }
+    final int quantity = int.parse(_amountEditingController.text);
+    final String sentBy = user.id;
+
+    final Request request = Request(
+      requestId: requestId,
+      requestDate: requestDate,
+      requestType: requestType,
+      bloodGroup: bloodGroup,
+      quantity: quantity,
+      sentBy: sentBy,
+    );
+
+    return RequestsRepository().sendRequest(request);
   }
 
   @override
@@ -128,7 +159,7 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
                     height: 50,
                     child: Center(
                       child: TextField(
-                        controller: _textEditingController,
+                        controller: _amountEditingController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
                           hintText: 'Amount',
@@ -146,26 +177,52 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
             Center(
               child: PrimaryButton(
                 text: 'Send Request',
-                onPressed: () {
+                onPressed: () async {
                   // process request
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: const Text('Request Sent'),
-                        content: const Text(
-                            'Your request has been sent successfully.'),
-                        actions: <Widget>[
-                          ElevatedButton(
-                            child: const Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
+                  final success = await sendRequest();
+                  if (success) {
+                    if (context.mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Request Sent'),
+                            content: const Text(
+                                'Your request has been sent successfully.'),
+                            actions: <Widget>[
+                              ElevatedButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
                       );
-                    },
-                  );
+                    }
+                  } else {
+                    if (context.mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('There was an error'),
+                            content: const Text(
+                                'Please check that you have entered a valid amount.'),
+                            actions: <Widget>[
+                              ElevatedButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  }
                 },
               ),
             ),

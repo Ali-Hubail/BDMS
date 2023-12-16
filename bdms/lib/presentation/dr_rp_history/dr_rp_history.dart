@@ -1,7 +1,6 @@
 import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/event_item.dart';
-import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:bdms/data/authentication_repository.dart';
 import 'package:bdms/data/requests_repository.dart';
 import 'package:bdms/domain/person.dart';
