@@ -2,6 +2,7 @@ import 'package:bdms/common_widgets/custom_app_bar.dart';
 import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/primary_button.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_edit_info.dart';
+import 'package:bdms/presentation/dr_rp_settings/dr_rp_edit_medical_history.dart';
 import 'package:flutter/material.dart';
 
 class DrRpSettingsScreen extends StatelessWidget {
@@ -40,7 +41,11 @@ class DrRpSettingsScreen extends StatelessWidget {
               buttonHeight: 50,
               text: 'Edit Medical History',
               // Navigate to edit medical history
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const DrRpEditMedicalHistoryScreen(),
+                ));
+              },
             ),
             const Spacer(),
             SizedBox(
