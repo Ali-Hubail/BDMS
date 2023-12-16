@@ -12,7 +12,6 @@ class DiseasesRepository {
     final res =
         await http.get(Uri.parse('http://10.0.2.2:8080/person/disease/$id'));
 
-    print(res.statusCode);
     if (res.statusCode == 200) {
       drRp.diseasesCollection.dis.clear();
       final diseasesRes = jsonDecode(res.body);
@@ -35,20 +34,15 @@ class DiseasesRepository {
       },
     );
 
-    print(res.statusCode);
-
     if (res.statusCode == 200) {
       fetchDiseases();
     }
   }
 
   Future<void> deleteDisease(Disease disease) async {
-    print(disease.diseaseId);
     final res = await http.delete(
       Uri.parse('http://10.0.2.2:8080/person/disease/${disease.diseaseId}'),
     );
-
-    print(res.statusCode);
 
     if (res.statusCode == 200) {
       fetchDiseases();

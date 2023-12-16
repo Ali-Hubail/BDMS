@@ -8,7 +8,7 @@ class Request {
   final String requestType;
   final BloodGroup bloodGroup;
   final int quantity;
-  final String bloodbankId;
+  final String? bloodbankId;
   final bool requestStatus;
   final String sentBy;
   final DateTime requestDate;
@@ -18,7 +18,7 @@ class Request {
     required this.requestType,
     required this.bloodGroup,
     required this.quantity,
-    required this.bloodbankId,
+    this.bloodbankId,
     this.requestStatus = false,
     required this.sentBy,
     DateTime? requestDate,

@@ -102,3 +102,25 @@ export async function removeDisease(
             next(err);
         }
 }
+
+export async function sendRequest(
+    req:Request,
+    res:Response,
+    next:NextFunction
+    ){
+        try{
+            const newRequest = await db.insert(requestTable).values([{
+                request_id: req.body.request_id,
+                request_date: req.body.request_date,
+                request_status: req.body.request_status,
+                request_type: req.body.request_type,
+                blood_group: req.body.blood_group,
+                quantity: req.body.quantity,
+                sent_by: req.body.sent_by,
+                blood_bank_id: req.body.blood_bank_id
+            }]).returning();
+            return res.send(newRequest);
+        }catch(err){
+            next(err);
+        }
+    }
