@@ -93,6 +93,20 @@ class Person {
   factory Person.fromJson(String source) =>
       Person.fromMap(json.decode(source) as Map<String, dynamic>);
 
+  factory Person.fromJsonn(Map<String, dynamic> json) {
+    return Person(
+      id: json['person_id'].toString(),
+      name: json['name'],
+      bloodGroup: sTringToBg[json['blood_group']] as BloodGroup,
+      address: json['address'],
+      age: json['age'] as int,
+      contactNumber: json['contact_number'],
+      email: json['email'],
+      weight: json['weight'].toDouble(),
+      role: json['role'] ?? 'user',
+    );
+  }
+
   @override
   String toString() {
     return 'Person(id: $id, name: $name, email: $email, contactNumber: $contactNumber, role: $role, bloodGroup: $bloodGroup, address: $address, weight: $weight, age: $age)';

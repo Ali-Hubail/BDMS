@@ -14,6 +14,7 @@ export async function getPersons(
                     eq(person.role, "user")
                 ),
                 columns: {
+                    person_id: true,
                     name: true,
                     email: true,
                     age: true,
@@ -32,3 +33,19 @@ export async function getPersons(
             next(err);
         }
 }
+
+export async function deletePerson(
+    req:Request,
+    res:Response,
+    next:NextFunction
+    ){
+        try{
+            const {id} = req.params;
+            const deletedPerson = await db.delete(person).where(
+                eq(person.person_id, id)
+            ).returning();
+            return res.send(deletedPerson);
+        }catch(err){
+            next(err);
+        }
+    }

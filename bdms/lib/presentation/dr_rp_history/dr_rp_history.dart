@@ -35,7 +35,8 @@ class _DrRpHistoryScreenState extends State<DrRpHistoryScreen> {
             const SizedBox(height: 32),
             Expanded(
               child: FutureBuilder(
-                future: RequestsRepository().getDrRpHistory(),
+                future: RequestsRepository().getDrRpHistoryApproved(
+                    AuthenticationRepository.authInstance.signedInUser),
                 builder: (context, snapshot) {
                   final Person user =
                       AuthenticationRepository.authInstance.signedInUser;

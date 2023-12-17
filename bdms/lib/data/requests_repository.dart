@@ -7,11 +7,9 @@ import 'package:bdms/domain/request.dart';
 import 'package:http/http.dart' as http;
 
 class RequestsRepository {
-  Future<void> getDrRpHistory() async {
-    final Person drRp = AuthenticationRepository.authInstance.signedInUser;
-    final String id = drRp.id;
-    final res =
-        await http.get(Uri.parse('http://10.0.2.2:8080/person/history/$id'));
+  Future<void> getDrRpHistoryApproved(Person user) async {
+    final res = await http
+        .get(Uri.parse('http://10.0.2.2:8080/person/history/${user.id}'));
 
     if (res.statusCode == 200) {
       final decodedRes = jsonDecode(res.body);
@@ -19,11 +17,11 @@ class RequestsRepository {
       if (requestsList.isEmpty) {
         return;
       }
-      drRp.requestsCollection.reqs.clear();
+      user.requestsCollection.reqs.clear();
 
       for (int i = 0; i < requestsList.length; i++) {
         final Request request = Request.fromJson(res.body, i);
-        drRp.requestsCollection.addRequest(request);
+        user.requestsCollection.addRequest(request);
       }
     }
   }
