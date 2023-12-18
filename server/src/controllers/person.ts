@@ -2,6 +2,7 @@ import {eq } from "drizzle-orm";
 import { NextFunction, Request, Response, request } from "express";
 import db from "../db";
 import {Disease, disease, person, requestTable} from "../schema";
+import { double, int } from "drizzle-orm/mysql-core";
 
 export async function getPerson(
     req:Request,
@@ -120,6 +121,29 @@ export async function sendRequest(
                 blood_bank_id: req.body.blood_bank_id
             }]).returning();
             return res.send(newRequest);
+        }catch(err){
+            next(err);
+        }
+    }
+
+export async function updatePersonalInformation(
+    req:Request,
+    res:Response,
+    next:NextFunction
+    ){
+        try{
+            const {id} = req.params;
+            console.log(id);
+            console.log(req.body);
+            const updatedPerson = await db.update(person).set({
+                email: req.body.email,
+                contact_number: req.body.phone_number,
+                address: req.body.address,
+                weight: req.body.weight,
+            }).where(
+                eq(person.person_id, id)
+            ).returning();
+            return res.send(updatedPerson);
         }catch(err){
             next(err);
         }

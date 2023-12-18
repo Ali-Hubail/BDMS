@@ -74,9 +74,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               CustomBottomNavigationBarItem(
                 onTap: () {
                   Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MgrManageScreen(),
-                  ));
+                  setState(() {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MgrManageScreen(),
+                    ));
+                  });
 
                   setState(() {
                     selectedIndex = 1;

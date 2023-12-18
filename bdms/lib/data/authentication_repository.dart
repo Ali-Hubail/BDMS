@@ -41,7 +41,7 @@ class AuthenticationRepository {
       'email': email,
       'age': age,
       'weight': weight,
-      'contact_number': 'sfhasigoia',
+      'contact_number': contactNumber,
       'address': address,
       'blood_group': bloodGroup,
       'password': password,

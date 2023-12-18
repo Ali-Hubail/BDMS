@@ -3,7 +3,6 @@ import 'package:bdms/common_widgets/custom_bottom_navigation_bar.dart';
 import 'package:bdms/common_widgets/dr_rp_info_item.dart';
 import 'package:bdms/data/authentication_repository.dart';
 import 'package:bdms/data/requests_repository.dart';
-import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:flutter/material.dart';
 
 class MgrHomeScreen extends StatefulWidget {
@@ -49,7 +48,12 @@ class _MgrHomeScreenState extends State<MgrHomeScreen> {
                         itemBuilder: (context, index) => Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: DrRpInfoItem(
-                            bloodGroup: BloodGroup.A_NEGATIVE,
+                            bloodGroup: AuthenticationRepository
+                                .authInstance
+                                .signedInUser
+                                .requestsCollection
+                                .reqs[index]
+                                .bloodGroup,
                             name: AuthenticationRepository
                                 .authInstance
                                 .signedInUser

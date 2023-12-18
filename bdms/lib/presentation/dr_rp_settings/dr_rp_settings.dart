@@ -37,7 +37,9 @@ class DrRpSettingsScreen extends StatelessWidget {
                   return;
                 }
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const DrRpEditPersonalInfo(),
+                  builder: (context) => DrRpEditPersonalInfo(
+                    user: AuthenticationRepository.authInstance.signedInUser,
+                  ),
                 ));
               },
             ),
