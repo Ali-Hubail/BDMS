@@ -30,6 +30,12 @@ class DrRpSettingsScreen extends StatelessWidget {
               text: 'Edit Personal Information',
               // Navigate to edit personal information page
               onPressed: () {
+                if (AuthenticationRepository.authInstance.user == null) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ));
+                  return;
+                }
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const DrRpEditPersonalInfo(),
                 ));
@@ -43,7 +49,14 @@ class DrRpSettingsScreen extends StatelessWidget {
               buttonHeight: 50,
               text: 'Edit Medical History',
               // Navigate to edit medical history
+
               onPressed: () {
+                if (AuthenticationRepository.authInstance.user == null) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ));
+                  return;
+                }
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const DrRpEditMedicalHistoryScreen(),
                 ));
