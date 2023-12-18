@@ -1,3 +1,5 @@
+import 'package:bdms/data/authentication_repository.dart';
+import 'package:bdms/presentation/authentication/login_screen.dart';
 import 'package:bdms/presentation/dr_rp_history/dr_rp_history.dart';
 import 'package:bdms/presentation/dr_rp_home/dr_rp_home.dart';
 import 'package:bdms/presentation/dr_rp_settings/dr_rp_settings.dart';
@@ -87,8 +89,18 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             CustomBottomNavigationBarItem(
               onTap: () {
                 // Navigate to reports/history page
+                if (AuthenticationRepository.authInstance.signedInUser ==
+                    null) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
+                  );
+                  return;
+                }
                 if (!widget.managerView) {
                   Navigator.of(context).pop();
+
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => const DrRpHistoryScreen(),

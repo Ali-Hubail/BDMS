@@ -6,6 +6,7 @@ import 'package:bdms/data/requests_repository.dart';
 import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:bdms/domain/person.dart';
 import 'package:bdms/domain/request.dart';
+import 'package:bdms/presentation/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -178,6 +179,15 @@ class _DrRpHomeScreenState extends State<DrRpHomeScreen> {
               child: PrimaryButton(
                 text: 'Send Request',
                 onPressed: () async {
+                  if (AuthenticationRepository().signedInUser == null) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const LoginScreen();
+                        },
+                      ),
+                    );
+                  }
                   // process request
                   final success = await sendRequest();
                   if (success) {

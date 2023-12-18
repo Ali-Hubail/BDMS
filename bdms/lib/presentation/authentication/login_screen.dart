@@ -99,9 +99,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   buttonWidth: 350,
                 ),
                 const SizedBox(height: 15),
-                const InkWell(
-                  onTap: null,
-                  child: Text(
+                InkWell(
+                  onTap: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const DrRpHomeScreen();
+                        },
+                      ),
+                    )
+                  },
+                  child: const Text(
                     'Continue as Guest',
                     style: TextStyle(color: Colors.grey),
                   ),
