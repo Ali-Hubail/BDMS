@@ -20,12 +20,12 @@ class Person {
 
   final String id;
   final String name;
-  final String email;
-  final String contactNumber;
+  String email;
+  String contactNumber;
   final String role;
   final BloodGroup bloodGroup;
-  final String address;
-  final double weight;
+  String address;
+  double weight;
   final int age;
   final DiseasesCollection diseasesCollection =
       DiseasesCollection(diseases: []);

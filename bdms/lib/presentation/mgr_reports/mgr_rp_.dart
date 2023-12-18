@@ -1,7 +1,6 @@
 import 'package:bdms/common_widgets/blood_stat_info_item.dart';
 import 'package:bdms/common_widgets/custom_app_bar.dart';
-import 'package:bdms/common_widgets/primary_button.dart';
-import 'package:bdms/domain/blood_group_enum.dart';
+import 'package:bdms/data/reports_repository.dart';
 import 'package:flutter/material.dart';
 
 class MgrReports extends StatefulWidget {
@@ -12,6 +11,8 @@ class MgrReports extends StatefulWidget {
 }
 
 class _MgrReportsState extends State<MgrReports> {
+  var isWeekly = 'week';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,37 +28,73 @@ class _MgrReportsState extends State<MgrReports> {
             Padding(
               padding: const EdgeInsets.only(left: 24),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Text(
                     'Report',
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
-                  PrimaryButton(
-                      text: 'Month/Week', onPressed: () {}, buttonWidth: 180),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        isWeekly = 'week';
+                      });
+                    },
+                    child: Text(
+                      'Week',
+                      style: TextStyle(
+                        color: isWeekly == 'week' ? Colors.red : Colors.black,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      ReportsRepository().getBloodReportsByGroup();
+                      setState(() {
+                        isWeekly = 'month';
+                      });
+                    },
+                    child: Text(
+                      'Month',
+                      style: TextStyle(
+                        color: isWeekly == 'month' ? Colors.red : Colors.black,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
             const SizedBox(
               height: 24,
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: DropdownMenu<BloodGroup>(
-                dropdownMenuEntries: [
-                  for (final bloodgroup in BloodGroup.values)
-                    DropdownMenuEntry(
-                        value: bloodgroup, label: bgToString[bloodgroup]!),
-                ],
-              ),
+            Expanded(
+              child: FutureBuilder(
+                  future: ReportsRepository().getBloodTotal(isWeekly),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Column(
+                        children: [
+                          BloodStatInfoItem(
+                            title: 'Total Blood:',
+                            number: '${snapshot.data!['sum']} pints of blood',
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          BloodStatInfoItem(
+                            title: 'Total Donations:',
+                            number: snapshot.data!['count'].toString(),
+                          )
+                        ],
+                      );
+                    }
+                    ;
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
             ),
-            const SizedBox(
-              height: 24,
-            ),
-            const BloodStatInfoItem(title: 'Total Blood', number: '25L'),
-            const BloodStatInfoItem(title: 'Blood Type Total:', number: '25L'),
-            const BloodStatInfoItem(title: 'Total Donations:', number: '25L'),
-            const BloodStatInfoItem(title: 'Payments:', number: '500'),
           ],
         ),
       ),

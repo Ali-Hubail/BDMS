@@ -31,7 +31,9 @@ class DrRpSettingsScreen extends StatelessWidget {
               // Navigate to edit personal information page
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const DrRpEditPersonalInfo(),
+                  builder: (context) => DrRpEditPersonalInfo(
+                    user: AuthenticationRepository.authInstance.signedInUser,
+                  ),
                 ));
               },
             ),

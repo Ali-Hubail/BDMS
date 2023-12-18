@@ -4,6 +4,7 @@ import 'package:bdms/common_widgets/event_item.dart';
 import 'package:bdms/data/requests_repository.dart';
 import 'package:bdms/domain/blood_group_enum.dart';
 import 'package:bdms/domain/person.dart';
+import 'package:bdms/presentation/dr_rp_settings/dr_rp_edit_info.dart';
 import 'package:bdms/utils/months_mapping.dart';
 import 'package:flutter/material.dart';
 
@@ -32,9 +33,16 @@ class MgrManageDrRpScreen extends StatelessWidget {
             // fetch real data and display them
             Column(
               children: [
-                BloodStatInfoItem(
-                  title: 'Name',
-                  number: person.name,
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => DrRpEditPersonalInfo(user: person),
+                    ));
+                  },
+                  child: BloodStatInfoItem(
+                    title: 'Name',
+                    number: person.name,
+                  ),
                 ),
                 BloodStatInfoItem(
                   title: 'Blood Group',

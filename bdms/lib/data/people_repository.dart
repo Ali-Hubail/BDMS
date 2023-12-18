@@ -24,4 +24,33 @@ class PeopleRepository {
 
     return res.statusCode == 200;
   }
+
+  Future<bool> updatePerson(Person person, String? email, String? weight,
+      String? ctn, String? add) async {
+    final res = await http
+        .patch(Uri.parse('http://10.0.2.2:8080/person/${person.id}'), body: {
+      'email': email ?? person.email,
+      'weight': weight ?? person.weight,
+      'contact_number': ctn ?? person.contactNumber,
+      'address': add ?? person.address,
+    });
+
+    if (email != null) {
+      person.email = email;
+    }
+
+    if (weight != null) {
+      person.weight = double.parse(weight);
+    }
+
+    if (ctn != null) {
+      person.contactNumber = ctn;
+    }
+
+    if (add != null) {
+      person.address = add;
+    }
+
+    return res.statusCode == 200;
+  }
 }
